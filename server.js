@@ -2,8 +2,10 @@ const express = require("express");
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: process.env.DATABASE_URL,
-    ssl: true
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
 const cors = require("cors");
@@ -14,15 +16,15 @@ app.use(cors());
 
 let data;
 
-// knex
-//   .select("*")
-//   .from("students")
-//   .then((res) => {
-//     data = res;
-//   });
+knex
+  .select("*")
+  .from("students")
+  .then((res) => {
+    data = res;
+  });
 
 app.get("/", (req, res) => {
-  res.send({asek: 'wow'});
+  res.send({ asek: "wow" });
 });
 
 // app.get("/", (req, res) => {
