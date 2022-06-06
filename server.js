@@ -22,7 +22,7 @@ let data;
 //   });
 
 app.get("/", (req, res) => {
-  res.send('ok!');
+  res.send({asek: 'wow'});
 });
 
 // app.get("/", (req, res) => {
