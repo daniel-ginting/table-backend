@@ -24,7 +24,7 @@ knex
   });
 
 app.get("/", (req, res) => {
-  res.send({ asek: "wow" });
+  res.send(data);
 });
 
 // app.get("/", (req, res) => {
