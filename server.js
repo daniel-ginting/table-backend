@@ -24,7 +24,7 @@ knex
     data = res;
   });
 
-app.get("/data", (req, res) => {
+app.get("/", (req, res) => {
   res.send(data);
 });
 
