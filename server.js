@@ -2,11 +2,10 @@ const express = require("express");
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    port: 5432,
-    user: "danielginting",
-    password: "3232",
-    database: "demo",
+    host: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
   },
 });
 const cors = require("cors");
@@ -28,4 +27,4 @@ app.get("/", (req, res) => {
   res.send(data);
 });
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
