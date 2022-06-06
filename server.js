@@ -14,12 +14,12 @@ app.use(cors());
 
 let data;
 
-knex
-  .select("*")
-  .from("students")
-  .then((res) => {
-    data = res;
-  });
+// knex
+//   .select("*")
+//   .from("students")
+//   .then((res) => {
+//     data = res;
+//   });
 
 app.get("/", (req, res) => {
   res.send('ok!');
