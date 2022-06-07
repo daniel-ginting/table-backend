@@ -14,17 +14,17 @@ const app = express();
 
 app.use(cors());
 
-let datas;
+let data;
 
 knex
   .select("*")
   .from("students")
   .then((res) => {
-    datas = res;
+    data = res;
   });
 
 app.get("/", (req, res) => {
-  res.send(datas);
+  res.send(data);
 });
 
 // app.get("/", (req, res) => {
