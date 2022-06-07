@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send('Please use other URL parameter')
+  res.send("Please use other URL parameter");
 });
 
 app.get("/students", (req, res) => {
@@ -34,10 +34,7 @@ app.get("/students", (req, res) => {
 app.post("/insert-student", (req, res) => {
   // add student
   knex("students")
-    .insert([
-      { fullname: req.body.fullname },
-      { dateofbirth: req.body.dateofbirth },
-    ])
+    .insert({ fullname: req.body.fullname, dateofbirth: req.body.dateofbirth })
     .then(() => res.json("success adding student"));
 });
 
