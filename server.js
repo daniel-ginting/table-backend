@@ -18,17 +18,17 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
+  res.send('Please use other URL parameter')
+});
+
+app.get("/students", (req, res) => {
+  // grab students
   knex
     .select("*")
     .from("students")
     .then((res2) => {
       res.send(res2);
     });
-});
-
-app.get("/students", (req, res) => {
-  // grab students
-  res.send(db);
 });
 
 app.post("/insert-student", (req, res) => {
