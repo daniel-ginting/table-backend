@@ -13,6 +13,12 @@ const cors = require("cors");
 
 const app = express();
 
+const corsOptions = {
+  origin: 'https://melodious-cobbler-d81d3d.netlify.app/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 app.use(cors());
 
 app.use(bodyParser.json());
