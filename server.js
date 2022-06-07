@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.get("/students", (req, res) => {
   // grab students
+  res.set('Access-Control-Allow-Origin', '*');
   knex
     .select("*")
     .from("students")
@@ -39,6 +40,7 @@ app.get("/students", (req, res) => {
 
 app.post("/insert-student", (req, res) => {
   // add student
+  res.set('Access-Control-Allow-Origin', '*');
   knex("students")
     .insert({ fullname: req.body.fullname, dateofbirth: req.body.dateofbirth })
     .then(() => res.json("success adding student"));
