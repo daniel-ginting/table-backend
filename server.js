@@ -14,21 +14,15 @@ const app = express();
 
 app.use(cors());
 
-let data;
-
-knex
+app.get("/", (req, res) => {
+  knex
   .select("*")
   .from("students")
-  .then((res) => {
-    data = res;
+  .then((res2) => {
+    res.send(res2);
   });
-
-app.get("/", (req, res) => {
-  res.send(data);
+  
 });
 
-// app.get("/", (req, res) => {
-//   res.send('ok!');
-// });
 
 app.listen(process.env.PORT || 4000);
