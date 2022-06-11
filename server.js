@@ -2,6 +2,11 @@ const express = require("express");
 const knex = require("knex")({
   client: "pg",
   connection: {
+    // host: "127.0.0.1",
+    // port: 5432,
+    // user: "danielginting",
+    // password: "3232",
+    // database: "demo",
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
@@ -21,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/students", (req, res) => {
-  // grab students
+  // Grab students
   knex
     .select("*")
     .from("students")
@@ -31,11 +36,23 @@ app.get("/students", (req, res) => {
 });
 
 app.post("/insert-student", (req, res) => {
-  // add student
-  knex("students")
-    .insert({ fullname: req.body.fullname, dateofbirth: req.body.dateofbirth })
-    .then(() => res.json("success adding student"));
-});
+  // Grab latest id
+  // let id;
+  // knex
+  //   .select("latestid")
+  //   .from("idstorage")
+  //   .then((res1) => {
+  //     id = res1[0].latestid;
+      knex("students")
+        .insert({
+          // id: id + 1,
+          fullname: req.body.fullname,
+          dateofbirth: req.body.dateofbirth,
+        })
+        .then(() => res.json("success adding student"));
+    });
+  // knex.where("idstorage").update({"latestid": id + 1});
+// });
 
 app.listen(process.env.PORT || 4000);
 // app.listen(3000);
