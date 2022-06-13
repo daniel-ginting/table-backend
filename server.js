@@ -1,7 +1,7 @@
 const express = require("express");
 const knex = require("knex")({
   client: "pg",
-  // connection: {
+  connection: {
   //   host: "127.0.0.1",
   //   port: 5432,
   //   user: "danielginting",
@@ -11,7 +11,7 @@ const knex = require("knex")({
   ssl: {
     rejectUnauthorized: false,
   },
-  // },
+  },
 });
 const cors = require("cors");
 
