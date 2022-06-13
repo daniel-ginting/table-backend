@@ -2,15 +2,15 @@ const express = require("express");
 const knex = require("knex")({
   client: "pg",
   connection: {
-  //   host: "127.0.0.1",
-  //   port: 5432,
-  //   user: "danielginting",
-  //   password: "3232",
-  //   database: "demo",
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+    host: "127.0.0.1",
+    port: 5432,
+    user: "danielginting",
+    password: "3232",
+    database: "demo",
+    // connectionString: process.env.DATABASE_URL,
+    // ssl: {
+    //   rejectUnauthorized: false,
+    // },
   },
 });
 const cors = require("cors");
@@ -54,13 +54,16 @@ app.post("/insert-student", (req, res) => {
         // Update id storage
         .then(() => {
           res.json("success adding student");
-          knex("idstorage").where("latestid", "=", id).increment("latestid", 1);
+          knex("idstorage")
+            .where("latestid", "=", id)
+            .increment("latestid", 1)
+            .returning("latestid")
+            .then((result) => console.log(result));
         });
-    })
-    .then(() => {});
+    });
 });
 
-app.listen(process.env.PORT || 4000);
-// app.listen(3000, () => {
-//   console.log("Server's running");
-// });
+// app.listen(process.env.PORT || 4000);
+app.listen(3000, () => {
+  console.log("Server's running");
+});
