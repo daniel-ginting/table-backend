@@ -1,6 +1,6 @@
 const express = require("express");
 const knex = require("knex")({
-  // client: "pg",
+  client: "pg",
   // connection: {
   //   host: "127.0.0.1",
   //   port: 5432,
