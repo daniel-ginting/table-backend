@@ -7,10 +7,10 @@ const knex = require("knex")({
   //   user: "danielginting",
   //   password: "3232",
   //   database: "demo",
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
   // },
 });
 const cors = require("cors");
