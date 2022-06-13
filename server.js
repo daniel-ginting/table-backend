@@ -53,12 +53,11 @@ app.post("/insert-student", (req, res) => {
         })
         // Update id storage
         .then(() => {
-          res.json("success adding student");
           knex("idstorage")
             .where("latestid", "=", id)
             .increment("latestid", 1)
             .returning("latestid")
-            .then((result) => console.log(result));
+            .then(() => res.json("success adding student"));
         });
     });
 });
