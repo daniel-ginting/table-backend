@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
   res.send("Please use other URL parameter");
 });
 
+// Getting students
 app.get("/students", (req, res) => {
   // Grab students
   knex
@@ -35,6 +36,7 @@ app.get("/students", (req, res) => {
     });
 });
 
+// Adding or inserting student
 app.post("/insert-student", (req, res) => {
   // Grab latest id
   let id;
@@ -60,6 +62,14 @@ app.post("/insert-student", (req, res) => {
             .then(() => res.json("success adding student"));
         });
     });
+});
+
+app.delete("/delete-student", (req, res) => {
+  // Delete student
+  knex("students")
+    .where("id", req.body.id)
+    .del()
+    .then(() => res.json(`student deleted`));
 });
 
 app.listen(process.env.PORT || 4000);
