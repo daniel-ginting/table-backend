@@ -17,6 +17,9 @@ const cors = require("cors");
 
 const app = express();
 
+// This is the authentication code :)
+const authCode = "wedfghj76rj76t";
+
 app.use(express.json());
 
 app.use(cors());
@@ -26,14 +29,20 @@ app.get("/", (req, res) => {
 });
 
 // Getting students
-app.get("/students", (req, res) => {
-  // Grab students
-  knex
-    .select("*")
-    .from("students")
-    .then((res2) => {
-      res.send(res2);
-    });
+app.post("/students", (req, res) => {
+  console.log('ok')
+  // Authentication
+  if (req.body.code === authCode) {
+    // Grab students
+    knex
+      .select("*")
+      .from("students")
+      .then((res2) => {
+        res.json(res2);
+      });
+  } else {
+    res.status(403).json("Don't MESS AROUND!!! You are UNAUTHORIZED!!!!");
+  }
 });
 
 // Adding or inserting student
