@@ -18,7 +18,7 @@ const cors = require("cors");
 const app = express();
 
 // This is the authentication code :)
-const authCode = "Deny paling jago sedunia";
+const authCode = "Deny adalah orang paling jago sedunia";
 
 app.use(express.json());
 
