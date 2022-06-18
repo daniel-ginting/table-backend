@@ -18,7 +18,7 @@ const cors = require("cors");
 const app = express();
 
 // This is the authentication code :)
-const authCode = "Deny adalah orang paling jago sedunia" || "1234";
+const authCode = "Deny adalah orang paling jago sedunia";
 
 app.use(express.json());
 
@@ -30,9 +30,9 @@ app.get("/", (req, res) => {
 
 // Getting students
 app.post("/students", (req, res) => {
-  console.log('ok')
+  console.log("ok");
   // Authentication
-  if (req.body.code === authCode) {
+  if (req.body.code === authCode || req.body.code === "1234") {
     // Grab students
     knex
       .select("*")
