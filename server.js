@@ -13,6 +13,7 @@ const knex = require("knex")({
     },
   },
 });
+
 const cors = require("cors");
 
 const app = express();
