@@ -14,9 +14,9 @@ const knex = require("knex")({
   },
 });
 
-const cors = require("cors");
-
 const app = express();
+
+const cors = require("cors");
 
 // This is the authentication code :)
 const authCode = "Deny adalah orang paling jago sedunia";
